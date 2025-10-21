@@ -1,0 +1,265 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Professional color system for SmartPark - tech-forward parking management */
+
+  /* Primary Brand Colors */
+  --color-primary: #06b6d4; /* Cyan 500 - Technology & Trust */
+  --color-primary-hover: #0891b2; /* Cyan 600 */
+  --color-primary-light: #22d3ee; /* Cyan 400 */
+  --color-primary-dark: #0e7490; /* Cyan 700 */
+
+  /* Status Colors */
+  --color-success: #10b981; /* Emerald 500 - Available */
+  --color-success-light: #34d399; /* Emerald 400 */
+  --color-warning: #f59e0b; /* Amber 500 - Limited */
+  --color-warning-light: #fbbf24; /* Amber 400 */
+  --color-danger: #f43f5e; /* Rose 500 - Occupied */
+  --color-danger-light: #fb7185; /* Rose 400 */
+
+  /* Neutral Scale - Dark Theme */
+  --color-background: #020617; /* Slate 950 - Deep background */
+  --color-surface: #0f172a; /* Slate 900 - Card surface */
+  --color-surface-elevated: #1e293b; /* Slate 800 - Elevated cards */
+  --color-surface-hover: #334155; /* Slate 700 - Hover state */
+
+  --color-foreground: #f8fafc; /* Slate 50 - Primary text */
+  --color-foreground-muted: #cbd5e1; /* Slate 300 - Secondary text */
+  --color-foreground-subtle: #94a3b8; /* Slate 400 - Tertiary text */
+
+  --color-border: #1e293b; /* Slate 800 - Subtle borders */
+  --color-border-strong: #334155; /* Slate 700 - Strong borders */
+
+  /* Semantic Tokens */
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-foreground);
+  --popover: var(--color-surface-elevated);
+  --popover-foreground: var(--color-foreground);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-background);
+  --secondary: var(--color-surface-elevated);
+  --secondary-foreground: var(--color-foreground);
+  --muted: var(--color-surface-elevated);
+  --muted-foreground: var(--color-foreground-subtle);
+  --accent: var(--color-primary-light);
+  --accent-foreground: var(--color-background);
+  --destructive: var(--color-danger);
+  --destructive-foreground: var(--color-foreground);
+  --border: var(--color-border);
+  --input: var(--color-surface-elevated);
+  --ring: var(--color-primary);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Border Radius */
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows for depth */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-glow: 0 0 20px rgb(6 182 212 / 0.3);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Removed invalid outline-ring/50 class */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Professional typography hierarchy */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  /* Smooth transitions for professional feel */
+  button,
+  a,
+  [role="button"] {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-hover);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+  }
+}
+
+/* Professional utility classes for SmartPark */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  }
+
+  .bg-gradient-success {
+    background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
+  }
+
+  .bg-gradient-danger {
+    background: linear-gradient(135deg, var(--color-danger) 0%, #e11d48 100%);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Glow effects for interactive elements */
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  .glow-danger {
+    box-shadow: 0 0 20px rgba(244, 63, 94, 0.3);
+  }
+}
