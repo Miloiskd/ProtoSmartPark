@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { ParkingCard } from "@/components/parking-card"
 import { NotificationPanel } from "@/components/notification-panel"
 import { ReservationModal } from "@/components/reservation-modal"
+import { ReservationsList } from "@/components/reservations-list"
 import { parkingRepository, type ParkingSpace } from "@/lib/patterns/repository"
 import { parkingAvailabilitySubject } from "@/lib/patterns/observer"
 import { Car, Sparkles } from "lucide-react"
@@ -59,13 +60,17 @@ export default function Home() {
   }
 
   const handleConfirmReservation = async (spaceId: string, startTime: Date, endTime: Date) => {
-    await parkingRepository.createReservation({
+    console.log("[v0] Main Page - Confirming reservation for space:", spaceId)
+
+    const reservation = await parkingRepository.createReservation({
       spaceId,
-      userId: "user-123", // En producción, esto vendría de la sesión
+      userId: "user-123",
       startTime,
       endTime,
       status: "confirmed",
     })
+
+    console.log("[v0] Main Page - Reservation created successfully:", reservation)
 
     const space = spaces.find((s) => s.id === spaceId)
     if (space) {
@@ -127,10 +132,14 @@ export default function Home() {
           </div>
         )}
 
+        <div className="mt-12">
+          <ReservationsList />
+        </div>
+
         {/* Pattern Information */}
         <div className="mt-12 grid md:grid-cols-2 gap-6">
           <div className="bg-surface border border-border rounded-(--radius) p-6">
-            <h3 className="text-xl font-bold text-foreground mb-3">🏗️ Repository Pattern</h3>
+            <h3 className="text-xl font-bold text-foreground mb-3">Repository Pattern</h3>
             <p className="text-muted mb-4">
               Separa la lógica de acceso a datos de la lógica de negocio, proporcionando una interfaz limpia para
               operaciones CRUD.
@@ -144,7 +153,7 @@ export default function Home() {
           </div>
 
           <div className="bg-surface border border-border rounded-(--radius) p-6">
-            <h3 className="text-xl font-bold text-foreground mb-3">👁️ Observer Pattern</h3>
+            <h3 className="text-xl font-bold text-foreground mb-3">Observer Pattern</h3>
             <p className="text-muted mb-4">
               Permite que múltiples componentes se suscriban a eventos y reciban notificaciones automáticas cuando
               ocurren cambios.
