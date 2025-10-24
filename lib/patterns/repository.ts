@@ -107,14 +107,37 @@ export class ParkingRepository implements IParkingRepository {
       ...reservation,
       id: `res-${Date.now()}`,
     }
+
+    console.log("[v0] Repository Pattern - Creating new reservation:", {
+      reservationId: newReservation.id,
+      spaceId: newReservation.spaceId,
+      userId: newReservation.userId,
+      startTime: newReservation.startTime,
+      endTime: newReservation.endTime,
+      status: newReservation.status,
+    })
+
     this.reservations.push(newReservation)
+
+    console.log("[v0] Repository Pattern - Total reservations stored:", this.reservations.length)
+    console.log("[v0] Repository Pattern - All reservations:", this.reservations)
+
     await this.updateSpaceStatus(reservation.spaceId, "reserved")
     return newReservation
   }
 
   async getReservationsByUser(userId: string): Promise<Reservation[]> {
     await this.delay(200)
-    return this.reservations.filter((r) => r.userId === userId)
+    console.log("[v0] Repository Pattern - Fetching reservations for user:", userId)
+    const userReservations = this.reservations.filter((r) => r.userId === userId)
+    console.log("[v0] Repository Pattern - Found reservations:", userReservations.length)
+    return userReservations
+  }
+
+  async getAllReservations(): Promise<Reservation[]> {
+    await this.delay(200)
+    console.log("[v0] Repository Pattern - Fetching all reservations:", this.reservations.length)
+    return [...this.reservations]
   }
 
   private delay(ms: number): Promise<void> {
